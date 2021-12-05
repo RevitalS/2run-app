@@ -3,15 +3,21 @@ package main
 import (
 	"context"
 	"fmt"
+	"net/http"
 	"os"
-
-	"github.com/RevitalS/someone-to-run-with-app/backend/foundation/nextid"
-	"github.com/RevitalS/someone-to-run-with-app/backend/sample-service/duck"
-	"github.com/RevitalS/someone-to-run-with-app/backend/sample-service/sql"
 
 	"github.com/RevitalS/someone-to-run-with-app/backend/foundation/config"
 	"github.com/RevitalS/someone-to-run-with-app/backend/foundation/nextlog"
 	"github.com/RevitalS/someone-to-run-with-app/backend/foundation/nextsql"
+
+	"github.com/RevitalS/someone-to-run-with-app/backend/sample-service/duck"
+	"github.com/RevitalS/someone-to-run-with-app/backend/sample-service/duckmanaging"
+	duckhttp "github.com/RevitalS/someone-to-run-with-app/backend/sample-service/http"
+	"github.com/RevitalS/someone-to-run-with-app/backend/sample-service/sql"
+)
+
+const (
+	port = ":1111"
 )
 
 func main() {
@@ -34,28 +40,24 @@ func main() {
 	// ducks repo
 	ducksRepo := sql.NewDuckRepo(sqlDB)
 
+	// ducking
+	duckService := duckmanaging.NewService(ducksRepo)
+
+	/* ****************************************************************************************************************** */
+
 	// example of use
-	// insert
-	someDuck := duck.Duck{
-		ID:   nextid.GenerateID(12),
-		Name: "Ducky",
-	}
-
-	otherDuck := duck.Duck{
-		ID:   nextid.GenerateID(12),
-		Name: "Ducky Mc'DuckFace",
-	}
-
 	ctx := context.Background()
-	if err := ducksRepo.InsertDuck(ctx, someDuck); err != nil {
-		mainLogger.Error(err, "failed to insert some duck")
+	someDuckID, err := duckService.CreateDuck(ctx, "Ducky")
+	if err != nil {
+		mainLogger.Error(err, "failed to insert some ducky")
 	}
 
-	if err := ducksRepo.InsertDuck(ctx, otherDuck); err != nil {
+	_, err = duckService.CreateDuck(ctx, "Ducky Mc'DuckFace")
+	if err != nil {
 		mainLogger.Error(err, "failed to insert other duck")
 	}
 
-	returnedDuck, err := ducksRepo.FindDuck(ctx, someDuck.ID)
+	returnedDuck, err := duckService.FindDuck(ctx, someDuckID)
 	if err != nil {
 		mainLogger.Error(err, "failed to find some duck")
 	}
@@ -70,6 +72,16 @@ func main() {
 	fmt.Println("\n----------- All Ducks: -------------")
 	printDucks(allDucks...)
 
+	/* ****************************************************************************************************************** */
+
+	// starting the http server
+	router := duckhttp.NewRouter()
+	duckhttp.AddDuckRoutes(router, duckService)
+
+	mainLogger.Info(fmt.Sprintf("start server on port: %s. if development - http://localhost%s", port, port))
+	if err := http.ListenAndServe(port, router); err != nil {
+		mainLogger.Error(err, "failed http listening and serving")
+	}
 }
 
 func printDucks(ducks ...duck.Duck) {
