@@ -1,10 +1,12 @@
-package sql
+package nextsql
 
 import (
 	"context"
 	"database/sql"
 	"fmt"
 	"reflect"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 const (

@@ -45,7 +45,7 @@ func TestNewLogger(t *testing.T) {
 
 	mock := loggerMock{}
 	mmLogger.kitLogger = &mock
-	mmLogger.Debug(ctx, "some msg",
+	mmLogger.Debug("some msg",
 		"firstKey", "first value",
 	)
 

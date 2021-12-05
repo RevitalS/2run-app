@@ -15,16 +15,14 @@ const (
 )
 
 type loggerator struct {
-	level  string
-	tenant string
-	out    io.Writer
+	level string
+	out   io.Writer
 }
 
-func NewLoggerator(level, tenant string, out io.Writer) *loggerator {
+func NewLoggerator(level string, out io.Writer) *loggerator {
 	return &loggerator{
-		level:  level,
-		tenant: tenant,
-		out:    out,
+		level: level,
+		out:   out,
 	}
 }
 
@@ -64,13 +62,11 @@ var APIStatusColors = map[string]string{
 
 func (l *loggerator) NewLogger(name string) Logger {
 	c := Config{
-		Level:  l.level,
-		Tenant: l.tenant,
+		Level: l.level,
 	}
 
 	logger := NewLogger(c, l.out,
 		"name", name,
-		"tenant", l.tenant,
 	)
 
 	if color, ok := NameColors[name]; ok {
