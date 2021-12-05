@@ -1,4 +1,4 @@
-package log
+package nextlog
 
 import (
 	"encoding/json"
