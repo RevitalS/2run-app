@@ -5,13 +5,14 @@ import (
 	"database/sql"
 	"fmt"
 	"reflect"
+	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 )
 
 const (
 	DefaultMaxOpenConns = 60
-	defaultTimeout      = 60
+	defaultTimeout      = 20 * time.Second
 )
 
 type DB interface {
@@ -161,6 +162,7 @@ func (d *db) Exec(ctx context.Context, query string, args ...interface{}) (int64
 		// not an insert, get rows affected instead
 		num, err = result.RowsAffected()
 	}
+
 	return num, err
 }
 
