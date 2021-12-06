@@ -10,8 +10,8 @@ import (
 )
 
 const (
-	headerKeyContentType      = "application/json"
-	headerVaueContentTypeJSON = "Content-Type"
+	headerValueContentTypeJSON = "application/json"
+	headerKeyContentType       = "Content-Type"
 )
 
 type DuckService interface {
@@ -20,16 +20,21 @@ type DuckService interface {
 }
 
 func AddDuckRoutes(router *httprouter.Router, s DuckService) {
-	duckHandler := makeAddDuckHandler(s)
+	duckHandler := makeFindDuckHandler(s)
 	getAllDucksHandler := makeGetAllDucksHandler(s)
 
 	router.Handle(http.MethodGet, "/ducks", getAllDucksHandler)
 	router.Handle(http.MethodGet, "/ducks/:id", duckHandler)
 }
 
-func makeAddDuckHandler(s DuckService) httprouter.Handle {
+// private
+
+func makeFindDuckHandler(s DuckService) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
+		// decode http request
 		id := params.ByName("id")
+
+		// trigger BL
 		dck, err := s.FindDuck(r.Context(), id)
 		if err != nil {
 			// TODO(oren): encode error (don't panic)
@@ -37,6 +42,7 @@ func makeAddDuckHandler(s DuckService) httprouter.Handle {
 			panic("makeAddDuckHandler paniced! aaaa " + err.Error())
 		}
 
+		// encode to http response
 		formatted := formatGetDuckResponse(dck)
 		encodeJSON(w, formatted)
 	}
@@ -56,8 +62,7 @@ func makeGetAllDucksHandler(s DuckService) httprouter.Handle {
 }
 
 func encodeJSON(w http.ResponseWriter, data interface{}) {
-	w.Header().Set(headerKeyContentType, headerVaueContentTypeJSON)
-	w.WriteHeader(http.StatusOK)
+	w.Header().Set(headerKeyContentType, headerValueContentTypeJSON)
 
 	jsonBytes, err := json.Marshal(data)
 	if err != nil {
@@ -68,4 +73,6 @@ func encodeJSON(w http.ResponseWriter, data interface{}) {
 	if err != nil {
 		// TODO: log error
 	}
+
+	w.WriteHeader(http.StatusTeapot)
 }
