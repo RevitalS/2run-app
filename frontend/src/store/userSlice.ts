@@ -1,17 +1,37 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {IUser} from '../models/IUser'
+import {Gender, City, RunningGoals, JoggingLevel} from '../models/Enums'
+
+
+interface MyUser {
+  user: IUser,
+}
+
+const initialState: MyUser = {
+  user: { 
+    userName: '',
+    fullName: '',
+    gender: Gender.Init,
+    birthDate: new Date(),
+    city: City.Init,
+    profilePicture: '',
+    minSpeed: 0,
+    maxSpeed: 100,
+    runningGoals: RunningGoals.Init,
+    joggingLevel: JoggingLevel.Init,
+    GenderPreference: Gender.Init,
+    about: '',
+    token : '',
+  },
+}
 
 export const userSlice = createSlice({
   name: 'user',
-  initialState: {
-    user: {
-      userName: '',
-      profilePicture: '',
-    },
-  },
+  initialState: initialState,
   reducers: {
     initUser: (
       state,
-      action: PayloadAction<{ userName: string; profilePicture: string }>
+      action: PayloadAction<IUser>
     ) => {
       state.user = action.payload;
     },
