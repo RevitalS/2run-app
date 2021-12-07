@@ -21,7 +21,6 @@ const initialState: MyUser = {
     joggingLevel: JoggingLevel.Init,
     GenderPreference: Gender.Init,
     about: '',
-    token : '',
   },
 }
 
