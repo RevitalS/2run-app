@@ -13,5 +13,10 @@ export interface IUser {
   joggingLevel: JoggingLevel;
   GenderPreference: Gender;
   about: string;
+}
+
+export interface ILoginUser {
+  email: string;
+  password: string;
   token: string;
 }
