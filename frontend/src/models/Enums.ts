@@ -1,12 +1,12 @@
 export enum Gender {
-    Init,
-    Fmale,
-    Male,
-    Other,
+    Init = '',
+    Fmale = 'Fmale',
+    Male = 'Male',
+    Other = 'Other',
   }
   
   export enum RunningGoals {
-    Init = 'init',
+    Init = '',
     GeneralFitness = 'General fitness',
     Run5km = 'Run 5km',
     Run10km = 'Run 10km',
@@ -15,14 +15,14 @@ export enum Gender {
   }
   
   export enum JoggingLevel {
-    Init = 'init',
+    Init = '',
     Beginner = 'Beginner',
     Intermediate = 'Intermediate',
     Advanced = 'Advanced',
   }
   
   export enum City {
-    Init = 'init',
+    Init = '',
     TelAviv = 'Tel Aviv',
     Jerusalem = 'Jerusalem',
     UmAlFahem = 'Um Al-Fahem',
