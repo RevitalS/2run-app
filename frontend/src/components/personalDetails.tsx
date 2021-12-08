@@ -42,9 +42,9 @@ const PesronalDetails: React.FC= () => {
           <p>City</p>
           <DropdownGeneric dropdownValues={city} />
           <p>min speed</p>
-          <input type="text" />
+          <input type="number" />
           <p>max speed</p>
-          <input type="text" />
+          <input type="number" />
           <p>Running goals</p>
           <DropdownGeneric dropdownValues={runningGoals} />
           <p>Jogging level</p>
