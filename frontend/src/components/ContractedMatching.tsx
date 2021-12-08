@@ -18,6 +18,8 @@ const ContractedMatching: React.FC<IProps> = (props) => {
     border-radius: 4px;
     &:hover {
       color: ${color};
+      background-color: #9be7ec;
+      cursor: pointer;
     };
     img {
       border: 1px solid black;
@@ -30,7 +32,7 @@ const ContractedMatching: React.FC<IProps> = (props) => {
       flex-wrap: wrap;
     }
     label { 
-      margin: 10px;
+      margin: 5px;
     }
   `;
 
