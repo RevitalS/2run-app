@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Outlet } from 'react-router';
 import ListPage from './ListPage';
 
 const Home: React.FC= () => {
@@ -7,7 +8,7 @@ const Home: React.FC= () => {
   return (
     <div>
         <h1>This is home page!</h1>
-        <ListPage/>
+        <Outlet/>
     </div>
   );
 };
