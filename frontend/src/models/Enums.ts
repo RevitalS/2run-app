@@ -30,3 +30,9 @@ export enum Gender {
     BeerSheva = 'Beer Sheva',
     Haifa = 'Haifa',
   }
+
+  export enum Prefences {
+    everyone = 'everyone',
+    men = 'men',
+    women = 'women',
+  }
