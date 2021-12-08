@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from '@emotion/css';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
   details: any;
@@ -7,6 +8,7 @@ interface IProps {
 
 const ContractedMatching: React.FC<IProps> = (props) => {
   const { name, city, speed, url } = props.details;
+  let navigate = useNavigate();
   const color = 'white';
 
   const styles = css`
@@ -36,7 +38,7 @@ const ContractedMatching: React.FC<IProps> = (props) => {
   `;
 
   return (
-    <div className={styles}>
+    <div className={styles} onClick={() => {navigate(`/${name}`)}}>
       <img src={url} alt='profile' />
       <div className='details'>
         <label>{name},</label>
