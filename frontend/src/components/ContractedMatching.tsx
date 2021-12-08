@@ -1,13 +1,12 @@
 import React from 'react';
-// import { css, jsx} from '@emotion/react';
-import { css, cx } from '@emotion/css';
+import { css } from '@emotion/css';
 
 interface IProps {
   details: any;
 }
 
 const ContractedMatching: React.FC<IProps> = (props) => {
-  const {name, city, speed, url} = props.details;
+  const { name, city, speed, url } = props.details;
   const color = 'white';
 
   const styles = css`
@@ -20,7 +19,7 @@ const ContractedMatching: React.FC<IProps> = (props) => {
       color: ${color};
       background-color: #9be7ec;
       cursor: pointer;
-    };
+    }
     img {
       border: 1px solid black;
       border-radius: 100%;
@@ -31,7 +30,7 @@ const ContractedMatching: React.FC<IProps> = (props) => {
       display: flex;
       flex-wrap: wrap;
     }
-    label { 
+    label {
       margin: 5px;
     }
   `;

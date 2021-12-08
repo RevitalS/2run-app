@@ -1,6 +1,14 @@
 import React from 'react';
 import DropdownGeneric from './DropdownGeneric';
 import { City, JoggingLevel, RunningGoals } from '../models/Enums';
+import { css } from '@emotion/css';
+
+const style = css`
+  display: flex;
+  flex-direction: wrap;
+  background-color: #b7ecf0;
+  border: 1px solid #f3e6e6;
+`;
 
 const Filter: React.FC = () => {
   const city = {
@@ -19,12 +27,22 @@ const Filter: React.FC = () => {
   };
 
   return (
-    <div>
+    <>
+      
+      <div className={style}>
       <label>Filter by:</label>
-      <DropdownGeneric dropdownValues={city} />
-      <DropdownGeneric dropdownValues={joggingLevel} />
-      <DropdownGeneric dropdownValues={runningGoals} />
+      <form >
+        <DropdownGeneric dropdownValues={city} />
+        <label>Min Speed</label>
+        <input type='number' />
+        <label>Max Speed</label>
+        <input type='number' />
+        <DropdownGeneric dropdownValues={joggingLevel} />
+        <DropdownGeneric dropdownValues={runningGoals} />
+        <button type='submit'>Filter</button>
+      </form>
     </div>
+    </>
   );
 };
 
