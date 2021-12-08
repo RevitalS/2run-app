@@ -1,7 +1,9 @@
 import React from 'react';
 import { css } from '@emotion/css';
+import { useParams } from 'react-router-dom';
 
 const MatchingProfile: React.FC = () => {
+  const params = useParams();
   const color = 'white';
 
   const styles = css`
@@ -42,7 +44,7 @@ const MatchingProfile: React.FC = () => {
     <div className={styles}>
         <img />
         <div className='col'>
-          <label>Name</label>
+          <label>{params.username}</label>
           <label>gender</label>
           <label>age</label>
           <label>city</label>
