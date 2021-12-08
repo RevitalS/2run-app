@@ -2,13 +2,18 @@ import React from 'react';
 // import { css, jsx} from '@emotion/react';
 import { css, cx } from '@emotion/css';
 
-const ContractedMatching: React.FC = () => {
+interface IProps {
+  details: any;
+}
+
+const ContractedMatching: React.FC<IProps> = (props) => {
+  const {name, city, speed, url} = props.details;
   const color = 'white';
 
   const styles = css`
     display: flex;
     padding: 32px;
-    background-color: hotpink;
+    background-color: #41969c;
     font-size: 24px;
     border-radius: 4px;
     &:hover {
@@ -17,23 +22,25 @@ const ContractedMatching: React.FC = () => {
     img {
       border: 1px solid black;
       border-radius: 100%;
+      height: 100px;
+      width: 100px;
     }
     .details {
-      border: 1px solid ${color};
+      display: flex;
+      flex-wrap: wrap;
     }
     label { 
-      background-color: yellow;
       margin: 10px;
     }
   `;
 
   return (
     <div className={styles}>
-      <img alt='profile' />
+      <img src={url} alt='profile' />
       <div className='details'>
-        <label>Name,</label>
-        <label>City,</label>
-        <label>Speed Range</label>
+        <label>{name},</label>
+        <label>{city},</label>
+        <label>{`Avg speed ${speed} kmh`}</label>
       </div>
     </div>
   );
