@@ -10,10 +10,12 @@ interface IProps {
 const DropdownGeneric: React.FC<IProps> = (props) => {
     const {type, options} = props.dropdownValues;
   return (
-      <select name={type} id={type}>
-      <option value="none" selected disabled hidden>{type}</option>
-          {options.map(option => <option value={option}>{option}</option>)}
+      <>
+      <label htmlFor={type}>{type}</label>
+      <select name={type} id={type} >
+          {options.map((option, i) => <option key={i} value={option}>{option}</option>)}
       </select>
+      </>
   );
 };
 
