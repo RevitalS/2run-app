@@ -5,11 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<App/>}>
+        <Route index element={<Navigate to='/' />}/>
+          {/* <Route index element={</>}/>
+          {/*
+          <Route path='inbox' element={<Inbox />} />
+          <Route path='*' element={<Navigate to='/'/>}/>
+          <Route path=':username' element={<MathcingUserProfile/>}/> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
