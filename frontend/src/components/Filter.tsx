@@ -21,15 +21,9 @@ const Filter: React.FC = () => {
   return (
     <div>
       <label>Filter by:</label>
-      <DropdownGeneric type={city.type} options={city.options} />
-      <DropdownGeneric
-        type={joggingLevel.type}
-        options={joggingLevel.options}
-      />
-      <DropdownGeneric
-        type={runningGoals.type}
-        options={runningGoals.options}
-      />
+      <DropdownGeneric dropdownValues={city} />
+      <DropdownGeneric dropdownValues={joggingLevel} />
+      <DropdownGeneric dropdownValues={runningGoals} />
     </div>
   );
 };
