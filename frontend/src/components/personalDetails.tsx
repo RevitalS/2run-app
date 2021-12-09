@@ -1,60 +1,140 @@
-import React from "react";
+import React,{ ChangeEvent, FormEvent, useState } from 'react';
+import { convertToObject, JsxEmit } from "typescript";
+import { css } from '@emotion/css';
+
+
 import {Gender, City, JoggingLevel, RunningGoals, Prefences } from '../models/Enums';
+import { useForm } from '../useForm';
 import DropdownGeneric from './DropdownGeneric';
+import { useFormInput } from '../hooks/useFormInput';
+import {IUser} from '../models/IUser'
+
+
+
+
 
 const PesronalDetails: React.FC= () => {
+
+    const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
+        onSubmit: () => alert('User submitted!'),
+      });
+
+    
+    const styles = css`
+    display: flex;
+    flex-direction: column;
+
+    .details{
+        display: flex;
+        flex-wrap: wrap;
+        }
+    .private{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    .training{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    .about{
+       height : 50px;
+    }`;
+
+
+
     const gender = {
+        value: user.gender,
         type: 'Gender',
         options: Object.values(Gender).slice(1),
       };
 
     const city = {
+        value: user.city,
         type: 'City',
         options: Object.values(City).slice(1),
       };
     
       const joggingLevel = {
+        value: user.joggingLevel,
         type: 'JoggingLevel',
         options: Object.values(JoggingLevel).slice(1),
       };
     
       const runningGoals = {
+        value: user.runningGoals,
         type: 'RunningGoals',
         options: Object.values(RunningGoals).slice(1),
       };
 
       const  prefences= {
+        value: user.GenderPreference,
         type: 'Prefences',
         options: Object.values(Prefences).slice(1),
       };
 
 
+      
     return (
-      <div>
-          <p>Full name</p>
-          <input type="text" />
-          <p>User name</p>
-          <input type="text" />
-          <p>Gender</p>
+        <form className={styles} onSubmit={handleSubmit}>
+          <div className="details">
+          <div className="private"> 
+
+          <label>Full name</label>
+            <input
+            placeholder="fullName*"
+            value={user.fullName || ''}
+            onChange={handleChange('fullName')}
+            required
+            />
+        {errors.fullName && <p className="error">{errors.fullName}</p>}
+
+            <label>User name</label>
+            <input
+            placeholder="userName*"
+            value={user.userName || ''}
+            onChange={handleChange('userName')}
+            required
+            />
+
+        {errors.userName && <p className="error">{errors.userName}</p>}
+
           <DropdownGeneric dropdownValues={gender} />
-          <p>Birth Date</p>
+          <label>Birth Date</label>
           <input type="date" />
-          <p>City</p>
           <DropdownGeneric dropdownValues={city} />
-          <p>min speed</p>
-          <input type="number" />
-          <p>max speed</p>
-          <input type="number" />
-          <p>Running goals</p>
+          </div>
+          <div className="training"> 
+
+          <label>min speed</label>
+          <input
+            placeholder="min speed*"
+            type="number"
+            value={user.minSpeed || ''}
+            onChange={handleChange('minSpeed')}
+            required
+            />
+          <label>max speed</label>
+          <input
+            placeholder="max speed*"
+            type="number"
+            value={user.maxSpeed || ''}
+            onChange={handleChange('maxSpeed')}
+            required
+            />
           <DropdownGeneric dropdownValues={runningGoals} />
-          <p>Jogging level</p>
           <DropdownGeneric dropdownValues={joggingLevel} />
-          <p>Prefences</p>
-          <DropdownGeneric dropdownValues={prefences} />
+          <DropdownGeneric dropdownValues={prefences}/>
+          </div>
+          </div>
           <p>A little about myself</p>
-          <input type="text" />
-          <div><button>Lets go!</button></div>
-    </div>
+          <input className="about" type="text" />
+          {<div><button >Lets go!</button></div> }
+          {console.log(user)}
+    </form>
     );
   };
+
+
   export default PesronalDetails;

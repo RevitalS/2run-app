@@ -15,6 +15,8 @@ export interface IUser {
   about: string;
 }
 
+
+
 export interface ILoginUser {
   email: string;
   password: string;

@@ -32,6 +32,7 @@ export enum Gender {
   }
 
   export enum Prefences {
+    Init = '',
     everyone = 'everyone',
     men = 'men',
     women = 'women',
