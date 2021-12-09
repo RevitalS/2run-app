@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import MatchingProfile from './components/MatchingProfile';
 import ListPage from './components/ListPage';
+import UserProfile from './components/UserProfile';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.render(
           <Route path='/' element={<App />}>
             <Route index element={<ListPage />} />
             <Route path=':username' element={<MatchingProfile />} />
+            <Route path='my-profile' element={<UserProfile />} />
             {/* <Route index element={</>}/>
           {/*
           <Route path='inbox' element={<Inbox />} />
