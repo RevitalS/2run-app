@@ -9,15 +9,12 @@ const UserProfile: React.FC = () => {
   const styles = css`
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
+
     padding: 32px;
     background-color: #41969c;
     font-size: 24px;
     border-radius: 4px;
-    &:hover {
-      color: ${color};
-      background-color: #9be7ec;
-      cursor: pointer;
-    }
     img {
       border: 1px solid black;
       border-radius: 100%;
