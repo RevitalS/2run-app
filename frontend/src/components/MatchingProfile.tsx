@@ -42,7 +42,7 @@ const MatchingProfile: React.FC = () => {
   return (
     <>
     <div className={styles}>
-        <img />
+        <img src='https://source.unsplash.com/user/c_v_r' alt='' />
         <div className='col'>
           <label>{params.username}</label>
           <label>gender</label>

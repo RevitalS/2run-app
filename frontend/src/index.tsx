@@ -12,19 +12,19 @@ import ListPage from './components/ListPage';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App/>}>
-        <Route index element={<ListPage/>}/>
-        <Route path=':username' element={<MatchingProfile/>}/>
-          {/* <Route index element={</>}/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />}>
+            <Route index element={<ListPage />} />
+            <Route path=':username' element={<MatchingProfile />} />
+            {/* <Route index element={</>}/>
           {/*
           <Route path='inbox' element={<Inbox />} />
           <Route path='*' element={<Navigate to='/'/>}/>
           <Route path=':username' element={<MathcingUserProfile/>}/> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

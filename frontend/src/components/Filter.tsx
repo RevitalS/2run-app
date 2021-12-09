@@ -39,7 +39,7 @@ const Filter: React.FC = () => {
 
   return (
     <>
-      <img src={FilterIcon} className={clickble} onClick={() => {setIsFilterOpen(!isFilterOpen)}}/> 
+      <img src={FilterIcon} className={clickble} alt='filter by' onClick={() => {setIsFilterOpen(!isFilterOpen)}}/> 
       {isFilterOpen &&
       <div className={style}>
       <label>Filter by:</label>
