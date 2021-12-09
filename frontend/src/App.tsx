@@ -11,7 +11,7 @@ function App() {
   const isLoggedIn = useAppSelector((state) => state.config.isLoggedIn);
   return <div className='App'>
     <TopBar/>
-    {!isLoggedIn ? <Welcome /> : <Home />}
+    <PersonalDetailsForm/>
     </div>;
 }
 
