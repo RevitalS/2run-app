@@ -8,6 +8,7 @@ const MessegePage: React.FC = () => {
 
   const styles = css`
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-around;
     padding: 32px;
@@ -38,21 +39,16 @@ const MessegePage: React.FC = () => {
   return (
     <>
     <div className={styles}>
+      <div>
         <img src='https://source.unsplash.com/user/c_v_r' alt='' />
-        <div className='col'>
           <label>{params.username}</label>
-          <label>gender</label>
-          <label>age</label>
-          <label>city</label>
-        </div>
-        <div className='col'>
-          <label>speed</label>
-          <label>joggingLevel</label>
-          <label>runningGoals</label>
-        </div>
+          </div>
+          <div>former messages</div>
+          <div>
+            <input type='text' placeholder='write your message'/>
         <button>Send Message</button>
+        </div>
     </div>
-    <p>about</p>
     </>
   );
 };

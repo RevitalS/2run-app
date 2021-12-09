@@ -19,7 +19,7 @@ const ContractedMessege: React.FC<IProps> = (props) => {
     border-radius: 4px;
     &:hover {
       color: ${color};
-      background-color: #9be7ec;
+      background-color: #6de4ec;
       cursor: pointer;
     }
     img {
@@ -30,10 +30,11 @@ const ContractedMessege: React.FC<IProps> = (props) => {
     }
     .details {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-content: flex-start;
     }
     label {
-      margin: 5px;
+      font-weight: bold;
     }
   `;
 
@@ -41,7 +42,7 @@ const ContractedMessege: React.FC<IProps> = (props) => {
     <div className={styles} onClick={() => {navigate(`${name}`)}}>
       <img src={url} alt='profile' />
       <div className='details'>
-        <label>{name},</label>
+        <label>{name}</label>
         <p>{message}</p>
       </div>
     </div>
