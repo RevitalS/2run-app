@@ -8,7 +8,7 @@ interface IProps {
 
 const ContractedMessege: React.FC<IProps> = (props) => {
   const { name, message,url } = props.details;
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const color = 'white';
 
   const styles = css`

@@ -1,6 +1,4 @@
 import React from 'react';
-import ContractedMatching from './ContractedMatching';
-import { City } from '../models/Enums';
 import ContractedMessege from './ContractedMessege';
 
 const MessegeList: React.FC = () => {

@@ -1,9 +1,10 @@
 import React from 'react';
 import { css } from '@emotion/css';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const MatchingProfile: React.FC = () => {
   const params = useParams();
+  const navigate = useNavigate();
   const color = 'white';
 
   const styles = css`
@@ -50,7 +51,7 @@ const MatchingProfile: React.FC = () => {
           <label>joggingLevel</label>
           <label>runningGoals</label>
         </div>
-        <button>Send Message</button>
+        <button onClick={() => {navigate(`/inbox/${params.username}`)}} >Send Message</button>
     </div>
     <p>about</p>
     </>
