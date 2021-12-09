@@ -6,9 +6,9 @@ interface IProps {
   details: any;
 }
 
-const ContractedMatching: React.FC<IProps> = (props) => {
-  const { name, city, speed, url } = props.details;
-  let navigate = useNavigate();
+const ContractedMessege: React.FC<IProps> = (props) => {
+  const { name, message,url } = props.details;
+  const navigate = useNavigate();
   const color = 'white';
 
   const styles = css`
@@ -19,7 +19,7 @@ const ContractedMatching: React.FC<IProps> = (props) => {
     border-radius: 4px;
     &:hover {
       color: ${color};
-      background-color: #9be7ec;
+      background-color: #6de4ec;
       cursor: pointer;
     }
     img {
@@ -30,23 +30,23 @@ const ContractedMatching: React.FC<IProps> = (props) => {
     }
     .details {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-content: flex-start;
     }
     label {
-      margin: 5px;
+      font-weight: bold;
     }
   `;
 
   return (
-    <div className={styles} onClick={() => {navigate(`/${name}`)}}>
+    <div className={styles} onClick={() => {navigate(`${name}`)}}>
       <img src={url} alt='profile' />
       <div className='details'>
-        <label>{name},</label>
-        <label>{city},</label>
-        <label>{`Avg speed ${speed} kmh`}</label>
+        <label>{name}</label>
+        <p>{message}</p>
       </div>
     </div>
   );
 };
 
-export default ContractedMatching;
+export default ContractedMessege;

@@ -6,22 +6,34 @@ import reportWebVitals from './reportWebVitals';
 import store from './store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import MatchingProfile from './components/MatchingProfile';
+import ListPage from './components/ListPage';
+import UserProfile from './components/UserProfile';
+import Inbox from './components/Inbox';
+import MessagePage from './components/MessagePage';
+import MessageList from './components/MessageList';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<App/>}>
-        <Route index element={<Navigate to='/' />}/>
-          {/* <Route index element={</>}/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />}>
+            <Route index element={<ListPage />} />
+            <Route path=':username' element={<MatchingProfile />} />
+            <Route path='my-profile' element={<UserProfile />} />
+            <Route path='inbox' element={<Inbox />}>
+              <Route index element={<MessageList/>}/>
+              <Route path=':username' element={<MessagePage />} />
+            </Route>
+            {/* <Route index element={</>}/>
           {/*
           <Route path='inbox' element={<Inbox />} />
           <Route path='*' element={<Navigate to='/'/>}/>
           <Route path=':username' element={<MathcingUserProfile/>}/> */}
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

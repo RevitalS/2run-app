@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import DropdownGeneric from './DropdownGeneric';
 import { City, JoggingLevel, RunningGoals } from '../models/Enums';
 import { css } from '@emotion/css';
+import FilterIcon from '../icons/filter.svg';
 
 const style = css`
   display: flex;
@@ -10,7 +11,17 @@ const style = css`
   border: 1px solid #f3e6e6;
 `;
 
+const clickble = css`
+    cursor: pointer;
+    &:hover {
+    background-color: #c4d5e9;
+    }
+`;
+
 const Filter: React.FC = () => {
+
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
   const city = {
     type: 'City',
     options: Object.values(City).slice(1),
@@ -28,7 +39,8 @@ const Filter: React.FC = () => {
 
   return (
     <>
-      
+      <img src={FilterIcon} className={clickble} alt='filter by' onClick={() => {setIsFilterOpen(!isFilterOpen)}}/> 
+      {isFilterOpen &&
       <div className={style}>
       <label>Filter by:</label>
       <form >
@@ -42,6 +54,7 @@ const Filter: React.FC = () => {
         <button type='submit'>Filter</button>
       </form>
     </div>
+}
     </>
   );
 };
