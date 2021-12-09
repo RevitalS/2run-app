@@ -10,8 +10,8 @@ import MatchingProfile from './components/MatchingProfile';
 import ListPage from './components/ListPage';
 import UserProfile from './components/UserProfile';
 import Inbox from './components/Inbox';
-import MessegePage from './components/MessegePage';
-import MessegeList from './components/MessegeList';
+import MessagePage from './components/MessagePage';
+import MessageList from './components/MessageList';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,8 +23,8 @@ ReactDOM.render(
             <Route path=':username' element={<MatchingProfile />} />
             <Route path='my-profile' element={<UserProfile />} />
             <Route path='inbox' element={<Inbox />}>
-              <Route index element={<MessegeList/>}/>
-              <Route path=':username' element={<MessegePage />} />
+              <Route index element={<MessageList/>}/>
+              <Route path=':username' element={<MessagePage />} />
             </Route>
             {/* <Route index element={</>}/>
           {/*

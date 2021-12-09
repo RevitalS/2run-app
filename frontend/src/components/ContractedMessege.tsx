@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const ContractedMessege: React.FC<IProps> = (props) => {
-  const { name, city, speed, url } = props.details;
+  const { name, message,url } = props.details;
   let navigate = useNavigate();
   const color = 'white';
 
@@ -42,8 +42,7 @@ const ContractedMessege: React.FC<IProps> = (props) => {
       <img src={url} alt='profile' />
       <div className='details'>
         <label>{name},</label>
-        <label>{city},</label>
-        <label>{`Avg speed ${speed} kmh`}</label>
+        <p>{message}</p>
       </div>
     </div>
   );

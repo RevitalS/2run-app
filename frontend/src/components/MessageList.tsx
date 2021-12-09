@@ -6,21 +6,18 @@ import ContractedMessege from './ContractedMessege';
 const MessegeList: React.FC = () => {
   const matchingProfiles = [
     {
-      name: 'Avi',
-      city: City.TelAviv,
-      speed: 4,
+      name: 'Mali',
+      message: 'Hi, lets run',
       url: 'https://source.unsplash.com/user/c_v_r',
     },
     {
-      name: 'Bela',
-      city: City.UmAlFahem,
-      speed: 3,
+      name: 'Shay',
+      message: 'Hi, where do you run?',
       url: 'https://source.unsplash.com/user/c_v_r',
     },
     {
-      name: 'Bob',
-      city: City.BeerSheva,
-      speed: 6,
+      name: 'Ben',
+      message: 'Hi, run fast!',
       url: 'https://source.unsplash.com/user/c_v_r',
     },
   ];
