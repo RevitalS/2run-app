@@ -23,19 +23,19 @@ const Filter: React.FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
   const city = {
-    value: '',
+    handleChange: ()=>{},
     type: 'City',
     options: Object.values(City).slice(1),
   };
 
   const joggingLevel = {
-    value: '',
+    handleChange: ()=>{},
     type: 'JoggingLevel',
     options: Object.values(JoggingLevel).slice(1),
   };
 
   const runningGoals = {
-    value: '',
+    handleChange: ()=>{},
     type: 'RunningGoals',
     options: Object.values(RunningGoals).slice(1),
   };
