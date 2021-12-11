@@ -1,24 +1,30 @@
 import React,{ ChangeEvent, FormEvent, useState } from 'react';
 import { convertToObject, JsxEmit } from "typescript";
 import { css } from '@emotion/css';
-
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 import {Gender, City, JoggingLevel, RunningGoals, Prefences } from '../models/Enums';
 import { useForm } from '../useForm';
 import DropdownGeneric from './DropdownGeneric';
 import { useFormInput } from '../hooks/useFormInput';
 import {IUser} from '../models/IUser'
+import {initUser} from '../store/userSlice';
 
 
+interface IProps {
+	profilePicture: string;
+}
 
 
-
-const PesronalDetails: React.FC= () => {
+const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
 
     const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
         onSubmit: () => alert('User submitted!'),
       });
-
+    
+    const dispatch = useAppDispatch();
+    user.profilePicture=profilePicture;
+    dispatch(initUser(user));
     
     const styles = css`
     display: flex;
@@ -71,6 +77,8 @@ const PesronalDetails: React.FC= () => {
         type: 'Prefences',
         options: Object.values(Prefences).slice(1),
       };
+
+      
 
 
       
