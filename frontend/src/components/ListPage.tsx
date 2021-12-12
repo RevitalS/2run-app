@@ -4,6 +4,29 @@ import Filter from './Filter';
 import MatchingList from './MatchingList';
 import Search from './Search';
 import { useFormInput } from '../hooks/useFormInput';
+import { css } from '@emotion/css';
+
+const color = 'white';
+
+const styles = css`
+  .search {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+  }
+  &:hover {
+    color: ${color};
+    background-color: #6de4ec;
+    cursor: pointer;
+  }
+
+  @media (max-width: 420px) {
+    flex-flow: column wrap;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 
 const ListPage: React.FC = () => {
   const searchValue = useFormInput('');
@@ -23,9 +46,10 @@ const ListPage: React.FC = () => {
   return (
     <div>
       <h1>List Page</h1>
-      <p>{searchValue.value}</p>
-      <Search searchValue={searchValue} />
-      <Filter />
+      <div className='search'>
+        <Search searchValue={searchValue} />
+        <Filter />
+      </div>
       <MatchingList matchingProfiles={getSearchedProfiles()} />
     </div>
   );
