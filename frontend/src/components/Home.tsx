@@ -3,16 +3,14 @@ import { css } from '@emotion/css';
 import React from 'react';
 import { Outlet } from 'react-router';
 import TopBar from './topBar';
-import '../App.css';
 
 const styles = css`
-  width: 80%;
+  width: 100%;
   margin: 5px;
   display: flex;
   flex-flow: column wrap;
   align-items: center;
   justify-content: center;
-  
 
   @media (max-width: 420px) {
     flex-flow: column wrap;

@@ -14,6 +14,7 @@ const styles = css`
   background-color: #41969c;
   font-size: 24px;
   border-radius: 4px;
+  margin-bottom: 5px;
   &:hover {
     color: ${color};
     background-color: #6de4ec;
