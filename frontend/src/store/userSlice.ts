@@ -1,11 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {IUser} from '../models/IUser'
+import {ILoginUser, IUser} from '../models/IUser'
 import {Gender, City, RunningGoals, JoggingLevel} from '../models/Enums'
 
 
 interface MyUser {
   user: IUser,
+  loginUser: ILoginUser
 }
+
+
 
 const initialState: MyUser = {
   user: { 
@@ -22,6 +25,11 @@ const initialState: MyUser = {
     GenderPreference: Gender.Init,
     about: '',
   },
+  loginUser: {
+    userName: '',
+    password: '',
+    token: '',
+  }
 }
 
 export const userSlice = createSlice({
@@ -33,6 +41,12 @@ export const userSlice = createSlice({
       action: PayloadAction<IUser>
     ) => {
       state.user = action.payload;
+    },
+    initlogUser: (
+      state,
+      action: PayloadAction<ILoginUser>
+    ) => {
+      state.loginUser = action.payload;
     },
   },
 });
