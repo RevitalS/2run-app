@@ -4,7 +4,7 @@ import { css } from '@emotion/css';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 import {Gender, City, JoggingLevel, RunningGoals, Prefences } from '../models/Enums';
-import { useForm } from '../useForm';
+import { useForm } from '../hooks/useForm';
 import DropdownGeneric from './DropdownGeneric';
 import { useFormInput } from '../hooks/useFormInput';
 import {IUser} from '../models/IUser'
