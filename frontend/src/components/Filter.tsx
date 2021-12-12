@@ -3,6 +3,8 @@ import DropdownGeneric from './DropdownGeneric';
 import { City, JoggingLevel, RunningGoals } from '../models/Enums';
 import { css } from '@emotion/css';
 import FilterIcon from '../icons/filter.svg';
+import { useForm } from '../hooks/useForm';
+import { IUser } from '../models/IUser';
 
 const style = css`
   display: flex;
@@ -21,24 +23,31 @@ const clickble = css`
 const Filter: React.FC = () => {
 
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
+  const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
+    onSubmit: () => alert('User submitted!'),
+  });
   const city = {
-    handleChange: ()=>{},
+    handleChange: handleChange,
     type: 'City',
-    options: Object.values(City).slice(1),
+    options: Object.values(City),
+    isRequired:false,
   };
 
   const joggingLevel = {
-    handleChange: ()=>{},
+    handleChange: handleChange,
     type: 'JoggingLevel',
-    options: Object.values(JoggingLevel).slice(1),
+    options: Object.values(JoggingLevel),
+    isRequired:false,
   };
 
   const runningGoals = {
-    handleChange: ()=>{},
+    handleChange: handleChange,
     type: 'RunningGoals',
-    options: Object.values(RunningGoals).slice(1),
+    options: Object.values(RunningGoals),
+    isRequired:false,
   };
+
+
 
   return (
     <>
@@ -46,12 +55,12 @@ const Filter: React.FC = () => {
       {isFilterOpen &&
       <div className={style}>
       <label>Filter by:</label>
-      <form >
+      <form onSubmit={handleSubmit}>
         <DropdownGeneric dropdownValues={city} />
         <label>Min Speed</label>
-        <input type='number' />
+        <input type='number' onChange={handleChange('minSpeed')}/>
         <label>Max Speed</label>
-        <input type='number' />
+        <input type='number' onChange={handleChange('maxSpeed')}/>
         <DropdownGeneric dropdownValues={joggingLevel} />
         <DropdownGeneric dropdownValues={runningGoals} />
         <button type='submit'>Filter</button>

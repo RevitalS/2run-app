@@ -9,7 +9,7 @@ interface IProps {
 
 const Search: React.FC<IProps> = ({ searchValue }) => {
   return (
-    <div>
+    <>
       <label>Serach</label>
       <input
         type='text'
@@ -18,7 +18,7 @@ const Search: React.FC<IProps> = ({ searchValue }) => {
         name='Serach'
         {...searchValue}
       />
-    </div>
+    </>
   );
 };
 
