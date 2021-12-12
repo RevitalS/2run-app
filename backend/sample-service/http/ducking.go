@@ -3,10 +3,11 @@ package http
 import (
 	"context"
 	"encoding/json"
+	"github.com/julienschmidt/httprouter"
 	"net/http"
 
 	"github.com/RevitalS/someone-to-run-with-app/backend/sample-service/duck"
-	"github.com/julienschmidt/httprouter"
+	//"github.com/julienschmidt/httprouter"
 )
 
 const (
@@ -33,6 +34,7 @@ func makeFindDuckHandler(s DuckService) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
 		// decode http request
 		id := params.ByName("id")
+
 
 		// trigger BL
 		dck, err := s.FindDuck(r.Context(), id)

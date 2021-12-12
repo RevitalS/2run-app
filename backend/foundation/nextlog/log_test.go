@@ -60,6 +60,6 @@ func TestNewLogger(t *testing.T) {
 
 	mock.Reset()
 	mmLogger.level = "info"
-	mmLogger.Debug(ctx, "some msg")
+	mmLogger.Debug("ctx", "some msg")
 	require.False(t, mock.wasCalled)
 }
