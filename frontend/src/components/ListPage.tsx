@@ -9,15 +9,20 @@ import { css } from '@emotion/css';
 const color = 'white';
 
 const styles = css`
+  width: 80%;
+  margin: 5px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
   .search {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     align-items: center;
-  }
-  &:hover {
-    color: ${color};
-    background-color: #6de4ec;
-    cursor: pointer;
+    justify-content: center;
+    * {
+      margin: 10px;
+    }
   }
 
   @media (max-width: 420px) {
@@ -44,7 +49,7 @@ const ListPage: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className={styles}>
       <h1>List Page</h1>
       <div className='search'>
         <Search searchValue={searchValue} />

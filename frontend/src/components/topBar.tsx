@@ -11,6 +11,7 @@ const TopBar: React.FC= () => {
   const url=useAppSelector((state) => state.user.user.profilePicture);
   const styles = css`
     height: 30px;
+    width: 100%;
     position: sticky;
     top: 0;
     left: 0;
