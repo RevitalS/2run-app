@@ -1,24 +1,30 @@
 import React,{ ChangeEvent, FormEvent, useState } from 'react';
 import { convertToObject, JsxEmit } from "typescript";
 import { css } from '@emotion/css';
-
+import { useAppDispatch, useAppSelector } from '../store/hooks';
 
 import {Gender, City, JoggingLevel, RunningGoals, Prefences } from '../models/Enums';
 import { useForm } from '../useForm';
 import DropdownGeneric from './DropdownGeneric';
 import { useFormInput } from '../hooks/useFormInput';
 import {IUser} from '../models/IUser'
+import {initUser} from '../store/userSlice';
 
 
+interface IProps {
+	profilePicture: string;
+}
 
 
-
-const PesronalDetails: React.FC= () => {
+const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
 
     const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
         onSubmit: () => alert('User submitted!'),
       });
-
+    
+    const dispatch = useAppDispatch();
+    user.profilePicture=profilePicture;
+    dispatch(initUser(user));
     
     const styles = css`
     display: flex;
@@ -42,37 +48,37 @@ const PesronalDetails: React.FC= () => {
        height : 50px;
     }`;
 
-
-
     const gender = {
-        value: user.gender,
+        handleChange: handleChange,
         type: 'Gender',
         options: Object.values(Gender).slice(1),
       };
 
     const city = {
-        value: user.city,
+        handleChange: handleChange,
         type: 'City',
         options: Object.values(City).slice(1),
       };
     
       const joggingLevel = {
-        value: user.joggingLevel,
+        handleChange: handleChange,
         type: 'JoggingLevel',
         options: Object.values(JoggingLevel).slice(1),
       };
     
       const runningGoals = {
-        value: user.runningGoals,
+        handleChange: handleChange,
         type: 'RunningGoals',
         options: Object.values(RunningGoals).slice(1),
       };
 
       const  prefences= {
-        value: user.GenderPreference,
+        handleChange: handleChange,
         type: 'Prefences',
         options: Object.values(Prefences).slice(1),
       };
+
+      
 
 
       
@@ -102,7 +108,12 @@ const PesronalDetails: React.FC= () => {
 
           <DropdownGeneric dropdownValues={gender} />
           <label>Birth Date</label>
-          <input type="date" />
+          <input
+            type="date"
+            
+            onChange={handleChange('birthDate')}
+            required
+            />
           <DropdownGeneric dropdownValues={city} />
           </div>
           <div className="training"> 
@@ -129,9 +140,13 @@ const PesronalDetails: React.FC= () => {
           </div>
           </div>
           <p>A little about myself</p>
-          <input className="about" type="text" />
+          <input
+            placeholder="a little about my self"
+            type="text"
+            value={user.about || ''}
+            onChange={handleChange('about')}
+            />
           {<div><button >Lets go!</button></div> }
-          {console.log(user)}
     </form>
     );
   };
