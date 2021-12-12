@@ -54,8 +54,8 @@ const MessegePage: React.FC = () => {
           <label>{params.username}</label>
           </div>
           <div>
-            {chatMessages.map(msg => (
-              <div className='chat-message'>
+            {chatMessages.map((msg, i) => (
+              <div className='chat-message' key={i}>
                 <label>{msg.name}</label>
                 <p>{msg.message}</p>
                 </div>

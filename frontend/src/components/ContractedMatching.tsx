@@ -57,7 +57,7 @@ const ContractedMatching: React.FC<IProps> = (props) => {
     <div
       className={styles}
       onClick={() => {
-        navigate(`/${name}`);
+        navigate(`${name}`);
       }}
     >
       <img src={url} alt='profile' />

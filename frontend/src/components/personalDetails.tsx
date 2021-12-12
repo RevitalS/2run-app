@@ -41,7 +41,7 @@ const styles = css`
 const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
     const navigate = useNavigate();
     const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
-        onSubmit: () => navigate(`/`),
+        onSubmit: () => navigate(`/home`),
       });
     
     const dispatch = useAppDispatch();

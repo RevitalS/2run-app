@@ -51,7 +51,7 @@ const MatchingProfile: React.FC = () => {
           <label>joggingLevel</label>
           <label>runningGoals</label>
         </div>
-        <button onClick={() => {navigate(`/inbox/${params.username}`)}} >Send Message</button>
+        <button onClick={() => {navigate(`/home/inbox/${params.username}`)}} >Send Message</button>
     </div>
     <p>about</p>
     </>

@@ -14,28 +14,25 @@ import MessagePage from './components/MessagePage';
 import MessageList from './components/MessageList';
 import { PersonalDetailsForm } from './components/PersonalDetailsForm';
 import SignUp from './components/SignUp';
+import Home from './components/Home';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<App />}>
+          <Route path='/' element={<App />}/>
+          <Route path='home' element={<Home />}>
             <Route index element={<ListPage />} />
             <Route path='details' element={<PersonalDetailsForm />} />
-            <Route path='sign-up' element={<SignUp/>} />
             <Route path='my-profile' element={<UserProfile />} />
             <Route path=':username' element={<MatchingProfile />} />
             <Route path='inbox' element={<Inbox />}>
-              <Route index element={<MessageList/>}/>
+              <Route index element={<MessageList />} />
               <Route path=':username' element={<MessagePage />} />
             </Route>
-            {/* <Route index element={</>}/>
-          {/*
-          <Route path='inbox' element={<Inbox />} />
-          <Route path='*' element={<Navigate to='/'/>}/>
-          <Route path=':username' element={<MathcingUserProfile/>}/> */}
           </Route>
+          <Route path='sign-up' element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </Provider>
