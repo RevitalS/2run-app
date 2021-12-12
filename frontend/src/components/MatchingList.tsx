@@ -7,11 +7,11 @@ interface IProps {
 
 const MatchingList: React.FC<IProps> = ({ matchingProfiles }) => {
   return (
-    <div>
+    <>
       {matchingProfiles.map((matching, i) => (
         <ContractedMatching key={i} details={matching} />
       ))}
-    </div>
+    </>
   );
 };
 
