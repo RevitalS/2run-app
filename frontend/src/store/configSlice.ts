@@ -25,7 +25,7 @@ const matchingProfiles = [
 export const configSlice = createSlice({
   name: 'config',
   initialState: {
-    isLoggedIn: true,
+    isLoggedIn: false,
     matchingProfiles: matchingProfiles,
   },
   reducers: {
@@ -37,10 +37,16 @@ export const configSlice = createSlice({
     },
     loginToggle: (state) => {
       state.isLoggedIn = !state.isLoggedIn;
+    },
+    login: (state) => {
+      state.isLoggedIn = true;
+    },
+    logout: (state) => {
+      state.isLoggedIn = false;
     }
   },
 });
 
-export const { initeMatchingProfiles, } = configSlice.actions;
+export const { initeMatchingProfiles, login, logout } = configSlice.actions;
 
 export default configSlice.reducer;

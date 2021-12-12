@@ -4,7 +4,7 @@ export interface IUser {
   userName: string;
   fullName: string;
   gender: Gender;
-  birthDate: Date;
+  birthDate: Date | null;
   city: City;
   profilePicture: string;
   minSpeed: number;

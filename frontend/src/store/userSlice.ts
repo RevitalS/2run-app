@@ -15,7 +15,7 @@ const initialState: MyUser = {
     userName: '',
     fullName: '',
     gender: Gender.Init,
-    birthDate: new Date(),
+    birthDate: null,
     city: City.Init,
     profilePicture: '',
     minSpeed: 0,
@@ -51,6 +51,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { initUser } = userSlice.actions;
+export const { initUser , initlogUser} = userSlice.actions;
 
 export default userSlice.reducer;

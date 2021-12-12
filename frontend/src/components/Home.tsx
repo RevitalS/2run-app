@@ -2,6 +2,8 @@
 import { css } from '@emotion/css';
 import React from 'react';
 import { Outlet } from 'react-router';
+import TopBar from './topBar';
+import '../App.css';
 
 const styles = css`
   width: 80%;
@@ -24,6 +26,7 @@ const Home: React.FC= () => {
 
   return (
     <div className={styles}>
+      <TopBar/>
         <h1>This is home page!</h1>
         <Outlet/>
     </div>
