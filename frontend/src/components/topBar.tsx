@@ -3,6 +3,7 @@ import { css } from '@emotion/css';
 import Home from './Home';
 import { useAppSelector } from '../store/hooks';
 import ProfilePicture from "./profilePicture"
+import { NavLink } from 'react-router-dom';
 
 const TopBar: React.FC= () => {
 
@@ -40,10 +41,10 @@ const TopBar: React.FC= () => {
   
     return (
       <div className={styles}>
-        <a href={"/"}>2-Run</a>
+        <NavLink to={'/'}>2-Run</NavLink>
         {isLoggedIn ? 
          <ul className="navbar-rightSide">
-        <button className="navbar-inbox">Inbox</button>
+        <NavLink to={'/inbox'} className="navbar-inbox">Inbox</NavLink>
         <img src={url} alt='profile' />
          <button className="navbar-logout">Log out</button>
        </ul>
