@@ -22,14 +22,13 @@ const Registration: React.FC= () => {
     const dispatch = useAppDispatch();
     const { handleSubmit, handleChange, data: userLogin, errors } = useForm<ILoginUser>({
         onSubmit: () => {
-            console.log(userLogin);
-            navigate(`details`)},
+            navigate(`/details`)},
         
       });
       dispatch(initlogUser(userLogin));
       
       return (
-        <form className={styles} onSubmit={handleSubmit}>
+        <form className={styles} >
         <div className="details">
 
         <label>UserName</label>
@@ -61,7 +60,7 @@ const Registration: React.FC= () => {
 
         {errors.password && <p className="error">{errors.password}</p>}
 
-        <div><button >Create account</button></div> 
+        <div><button>Create account</button></div> 
         </div>
     </form>
 

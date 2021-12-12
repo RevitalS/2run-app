@@ -8,24 +8,14 @@ import { useForm } from '../hooks/useForm';
 import DropdownGeneric from './DropdownGeneric';
 import {IUser} from '../models/IUser'
 import {initUser} from '../store/userSlice';
+import { useNavigate} from 'react-router-dom';
 
 
 interface IProps {
 	profilePicture: string;
 }
 
-
-const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
-
-    const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
-        onSubmit: () => alert('User submitted!'),
-      });
-    
-    const dispatch = useAppDispatch();
-    //user.profilePicture=profilePicture; 
-    dispatch(initUser(user));
-    
-    const styles = css`
+const styles = css`
     display: flex;
     flex-direction: column;
 
@@ -47,34 +37,52 @@ const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
        height : 50px;
     }`;
 
+
+const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
+    const navigate = useNavigate();
+    const { handleSubmit, handleChange, data: user, errors } = useForm<IUser>({
+        onSubmit: () => navigate(`/`),
+      });
+    
+    const dispatch = useAppDispatch();
+    //user.profilePicture=profilePicture; 
+    dispatch(initUser(user));
+    
+    
+
     const gender = {
         handleChange: handleChange,
         type: 'Gender',
-        options: Object.values(Gender).slice(1),
+        options: Object.values(Gender),
+        isRequired:true,
       };
 
     const city = {
         handleChange: handleChange,
         type: 'City',
-        options: Object.values(City).slice(1),
+        options: Object.values(City),
+        isRequired:true,
       };
     
       const joggingLevel = {
         handleChange: handleChange,
         type: 'JoggingLevel',
-        options: Object.values(JoggingLevel).slice(1),
+        options: Object.values(JoggingLevel),
+        isRequired:true,
       };
     
       const runningGoals = {
         handleChange: handleChange,
         type: 'RunningGoals',
-        options: Object.values(RunningGoals).slice(1),
+        options: Object.values(RunningGoals),
+        isRequired:true,
       };
 
       const  prefences= {
         handleChange: handleChange,
         type: 'Prefences',
-        options: Object.values(Prefences).slice(1),
+        options: Object.values(Prefences),
+        isRequired:true,
       };
 
       

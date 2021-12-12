@@ -13,6 +13,7 @@ import Inbox from './components/Inbox';
 import MessagePage from './components/MessagePage';
 import MessageList from './components/MessageList';
 import { PersonalDetailsForm } from './components/PersonalDetailsForm';
+import SignUp from './components/SignUp';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -21,9 +22,10 @@ ReactDOM.render(
         <Routes>
           <Route path='/' element={<App />}>
             <Route index element={<ListPage />} />
-            <Route path=':username' element={<MatchingProfile />} />
             <Route path='details' element={<PersonalDetailsForm />} />
+            <Route path='sign-up' element={<SignUp/>} />
             <Route path='my-profile' element={<UserProfile />} />
+            <Route path=':username' element={<MatchingProfile />} />
             <Route path='inbox' element={<Inbox />}>
               <Route index element={<MessageList/>}/>
               <Route path=':username' element={<MessagePage />} />
