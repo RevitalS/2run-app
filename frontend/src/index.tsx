@@ -22,12 +22,6 @@ ReactDOM.render(
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<App />}/>
-          <Route path='sign-up' element={<SignUp />} />
-            {/* <Route index element={</>}/>
-          {/*
-          <Route path='inbox' element={<Inbox />} />
-          <Route path='*' element={<Navigate to='/'/>}/>
-          <Route path=':username' element={<MathcingUserProfile/>}/> */}
           <Route path='home' element={<Home />}>
             <Route index element={<ListPage />} />
             <Route path='details' element={<PersonalDetailsForm />} />
@@ -38,6 +32,7 @@ ReactDOM.render(
               <Route path=':username' element={<MessagePage />} />
             </Route>
           </Route>
+          <Route path='sign-up' element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </Provider>
