@@ -5,8 +5,10 @@ import { useAppSelector } from '../store/hooks';
 import ProfilePicture from './profilePicture';
 import { NavLink } from 'react-router-dom';
 
+
 const styles = css`
   height: 30px;
+  width: 100%;
   position: sticky;
   top: 0;
   left: 0;
