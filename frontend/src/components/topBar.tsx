@@ -5,11 +5,7 @@ import { useAppSelector } from '../store/hooks';
 import ProfilePicture from "./profilePicture"
 import { NavLink } from 'react-router-dom';
 
-const TopBar: React.FC= () => {
-
-  const isLoggedIn = useAppSelector((state) => state.config.isLoggedIn);
-  const url=useAppSelector((state) => state.user.user.profilePicture);
-  const styles = css`
+const styles = css`
     height: 30px;
     position: sticky;
     top: 0;
@@ -38,6 +34,13 @@ const TopBar: React.FC= () => {
         width: 30px;
       }
   `;
+
+  
+const TopBar: React.FC= () => {
+
+  const isLoggedIn = useAppSelector((state) => state.config.isLoggedIn);
+  const url=useAppSelector((state) => state.user.user.profilePicture);
+  
   
     return (
       <div className={styles}>

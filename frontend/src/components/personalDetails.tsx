@@ -6,7 +6,6 @@ import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {Gender, City, JoggingLevel, RunningGoals, Prefences } from '../models/Enums';
 import { useForm } from '../hooks/useForm';
 import DropdownGeneric from './DropdownGeneric';
-import { useFormInput } from '../hooks/useFormInput';
 import {IUser} from '../models/IUser'
 import {initUser} from '../store/userSlice';
 
@@ -23,7 +22,7 @@ const PesronalDetails: React.FC<IProps> = ({profilePicture}) => {
       });
     
     const dispatch = useAppDispatch();
-    user.profilePicture=profilePicture;
+    //user.profilePicture=profilePicture; 
     dispatch(initUser(user));
     
     const styles = css`
