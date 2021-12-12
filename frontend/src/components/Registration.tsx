@@ -3,7 +3,7 @@ import { useForm } from '../hooks/useForm';
 import {ILoginUser} from '../models/IUser'
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import {initlogUser} from '../store/userSlice';
-import {loginToggle} from '../store/configSlice'
+import {login} from '../store/configSlice'
 import { css } from '@emotion/css';
 import { useNavigate} from 'react-router-dom';
 
@@ -23,8 +23,7 @@ const Registration: React.FC= () => {
     const dispatch = useAppDispatch();
     const { handleSubmit, handleChange, data: userLogin, errors } = useForm<ILoginUser>({
         onSubmit: () => {
-            console.log('login');
-            dispatch(loginToggle);
+            dispatch(login());
             
             navigate(`/home/details`)},
         

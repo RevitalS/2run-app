@@ -37,10 +37,16 @@ export const configSlice = createSlice({
     },
     loginToggle: (state) => {
       state.isLoggedIn = !state.isLoggedIn;
+    },
+    login: (state) => {
+      state.isLoggedIn = true;
+    },
+    logout: (state) => {
+      state.isLoggedIn = false;
     }
   },
 });
 
-export const { initeMatchingProfiles, loginToggle } = configSlice.actions;
+export const { initeMatchingProfiles, login, logout } = configSlice.actions;
 
 export default configSlice.reducer;
